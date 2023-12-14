@@ -37,3 +37,25 @@ class CornerRadiusView: UIView{
         
     }
 }
+
+class CornerRadiusBorderView: CornerRadiusView{
+    
+    @IBInspectable var borderWidth: CGFloat = 0.0{
+        didSet{
+            applyBorder(borderWidth: borderWidth, borderColor: borderColor, borderOpacity: borderOpacity)
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor = .clear{
+        didSet{
+            applyBorder(borderWidth: borderWidth, borderColor: borderColor, borderOpacity: borderOpacity)
+        }
+    }
+    
+    @IBInspectable var borderOpacity: CGFloat = 1.0{
+        didSet{
+            applyBorder(borderWidth: borderWidth, borderColor: borderColor, borderOpacity: borderOpacity)
+        }
+    }
+    
+}
