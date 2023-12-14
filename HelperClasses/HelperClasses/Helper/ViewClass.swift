@@ -59,3 +59,19 @@ class CornerRadiusBorderView: CornerRadiusView{
     }
     
 }
+
+class CornerRadiusBorderShadowView: CornerRadiusBorderView{
+    
+    @IBInspectable var shadowColor: UIColor = .clear
+    @IBInspectable var shadowOpacity: Float = 1.0
+    @IBInspectable var shadowXOffset: CGFloat = 0
+    @IBInspectable var shadowYOffset: CGFloat = 0
+    @IBInspectable var shadowBlur: CGFloat = 0
+    @IBInspectable var shadowSpread: CGFloat = 0
+   
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        applyShadow(shadowColor: shadowColor, shadowOpacity: shadowOpacity, shadowXOffset: shadowXOffset, shadowYOffset: shadowYOffset, shadowBlur: shadowBlur, shadowSpread: shadowSpread)
+    }
+    
+}
