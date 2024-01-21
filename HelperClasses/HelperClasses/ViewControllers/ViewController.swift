@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    static func root(){
+        AppDelegate.getAppDelegate()?.rootViewController(viewController: Self())
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
