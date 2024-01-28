@@ -51,13 +51,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18C7155B2B5D63D7005E369D /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
 		18F086DF2B2B7C2200CDFB27 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +72,7 @@
 			children = (
 				18F086FF2B2B7C3200CDFB27 /* LifeCycle */,
 				18F087012B2B7C5400CDFB27 /* ViewControllers */,
+				18FAA3DF2B6647F700884F27 /* CustomViews */,
 				18F087002B2B7C4600CDFB27 /* Helper */,
 				18F087082B2B7F2300CDFB27 /* Extensions */,
 				18F087042B2B7D2400CDFB27 /* StoryBoards */,
@@ -142,6 +136,14 @@
 			);
 			path = Extensions;
 			sourceTree = "<group>";
+		};
+		18FAA3DF2B6647F700884F27 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CustomViews;
+			path = HelperClasses/CustomViews;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
