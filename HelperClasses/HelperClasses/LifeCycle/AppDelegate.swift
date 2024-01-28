@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // make the view controller as the root view controller here.
-//        ViewController.root()
+//        ViewController.rootVC(storyboard: .main)
         return true
     }
 

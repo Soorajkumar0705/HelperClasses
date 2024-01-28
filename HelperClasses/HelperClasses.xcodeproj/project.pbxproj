@@ -18,6 +18,8 @@
 		18F086F82B2B7C2600CDFB27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18F086F62B2B7C2600CDFB27 /* LaunchScreen.storyboard */; };
 		18F087032B2B7C7400CDFB27 /* ViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F087022B2B7C7400CDFB27 /* ViewClass.swift */; };
 		18F087072B2B7F1F00CDFB27 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F087062B2B7F1F00CDFB27 /* Extension+UIView.swift */; };
+		18FAA3DC2B663F7D00884F27 /* Extension+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA3DB2B663F7D00884F27 /* Extension+UIViewController.swift */; };
+		18FAA3DE2B66409E00884F27 /* Extension+UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA3DD2B66409E00884F27 /* Extension+UIStoryboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		18F086F92B2B7C2600CDFB27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18F087022B2B7C7400CDFB27 /* ViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewClass.swift; sourceTree = "<group>"; };
 		18F087062B2B7F1F00CDFB27 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		18FAA3DB2B663F7D00884F27 /* Extension+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIViewController.swift"; sourceTree = "<group>"; };
+		18FAA3DD2B66409E00884F27 /* Extension+UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIStoryboard.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18C7155B2B5D63D7005E369D /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		18F086DF2B2B7C2200CDFB27 = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				18F087062B2B7F1F00CDFB27 /* Extension+UIView.swift */,
+				18FAA3DB2B663F7D00884F27 /* Extension+UIViewController.swift */,
 				188571832B2C9F870054CFD5 /* Extension+Bool.swift */,
+				18FAA3DD2B66409E00884F27 /* Extension+UIStoryboard.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -206,8 +219,10 @@
 				18F086EC2B2B7C2200CDFB27 /* AppDelegate.swift in Sources */,
 				1885718B2B2CA50C0054CFD5 /* Constant.swift in Sources */,
 				18F087072B2B7F1F00CDFB27 /* Extension+UIView.swift in Sources */,
+				18FAA3DE2B66409E00884F27 /* Extension+UIStoryboard.swift in Sources */,
 				18F086EE2B2B7C2200CDFB27 /* SceneDelegate.swift in Sources */,
 				18F087032B2B7C7400CDFB27 /* ViewClass.swift in Sources */,
+				18FAA3DC2B663F7D00884F27 /* Extension+UIViewController.swift in Sources */,
 				188571862B2CA0020054CFD5 /* FontFamilly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

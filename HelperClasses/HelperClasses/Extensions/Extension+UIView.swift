@@ -7,6 +7,41 @@
 
 import UIKit
 
+extension NSObject {
+    
+    var className: String {
+        return String(describing: Self.self)
+    }
+    
+    class var className: String {
+        return String(describing: Self.self)
+    }
+}
+
+extension UIView{
+    
+    func fromNib(){
+        if let view = Bundle.main.loadNibNamed(className, owner: self)?.first as? UIView{
+            view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.frame = bounds
+            self.addSubview(view)
+        }
+    }
+    
+}
+
+extension UIView {
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
+    }
+}
+
 extension UIView{
     
     func applyConerRadius(cornerRadius: CGFloat, corners: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]){
