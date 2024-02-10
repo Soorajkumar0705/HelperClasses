@@ -11,3 +11,18 @@ import Foundation
 // add the aspect ratio of the device screen from your targeted figma design
 let aspectRatio: CGSize = CGSize(width: 393, height: 852) // iPhone 14 Pro
 
+var is_live: Bool {
+#if DEBUG
+    return false
+#else
+    return true
+#endif
+}
+// CLOSURE
+typealias VoidClosure = () -> Void
+typealias PassStringClosure = (String) -> Void
+typealias PassBoolClosure = (Bool) -> Void
+
+// OTHER DataTypes
+typealias StringAnyDict = [String : Any]
+typealias StringAnyDictArray = [[String : Any]]
