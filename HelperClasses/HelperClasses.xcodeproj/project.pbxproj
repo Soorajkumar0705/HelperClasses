@@ -14,6 +14,7 @@
 		1869D91B2B77EAF700DA2210 /* QRCodeScannerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9192B77EAF600DA2210 /* QRCodeScannerHelper.swift */; };
 		1869D91D2B77EB6000DA2210 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D91C2B77EB5F00DA2210 /* OtherExtensions.swift */; };
 		1869D91F2B77EEE600DA2210 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D91E2B77EEE600DA2210 /* APIService.swift */; };
+		1869D9212B77F11200DA2210 /* AVPlayerHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9202B77F11200DA2210 /* AVPlayerHelperView.swift */; };
 		188571862B2CA0020054CFD5 /* FontFamilly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188571852B2CA0020054CFD5 /* FontFamilly.swift */; };
 		1885718B2B2CA50C0054CFD5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885718A2B2CA50C0054CFD5 /* Constant.swift */; };
 		18F086EC2B2B7C2200CDFB27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F086EB2B2B7C2200CDFB27 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		1869D9192B77EAF600DA2210 /* QRCodeScannerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerHelper.swift; sourceTree = "<group>"; };
 		1869D91C2B77EB5F00DA2210 /* OtherExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
 		1869D91E2B77EEE600DA2210 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		1869D9202B77F11200DA2210 /* AVPlayerHelperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerHelperView.swift; sourceTree = "<group>"; };
 		188571852B2CA0020054CFD5 /* FontFamilly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamilly.swift; sourceTree = "<group>"; };
 		1885718A2B2CA50C0054CFD5 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		18F086E82B2B7C2200CDFB27 /* HelperClasses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelperClasses.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 				1869D9132B77EA9900DA2210 /* BLEManagerPeripheralDelegate.swift */,
 				1869D9122B77EA9700DA2210 /* ComonFunctions.swift */,
 				1869D9192B77EAF600DA2210 /* QRCodeScannerHelper.swift */,
+				1869D9202B77F11200DA2210 /* AVPlayerHelperView.swift */,
 				1869D9182B77EAF500DA2210 /* Reachability.swift */,
 			);
 			path = Helper;
@@ -239,6 +242,7 @@
 				1869D91D2B77EB6000DA2210 /* OtherExtensions.swift in Sources */,
 				1869D91B2B77EAF700DA2210 /* QRCodeScannerHelper.swift in Sources */,
 				1869D9162B77EA9900DA2210 /* BLEManagerPeripheralDelegate.swift in Sources */,
+				1869D9212B77F11200DA2210 /* AVPlayerHelperView.swift in Sources */,
 				18F086EC2B2B7C2200CDFB27 /* AppDelegate.swift in Sources */,
 				1869D91F2B77EEE600DA2210 /* APIService.swift in Sources */,
 				1885718B2B2CA50C0054CFD5 /* Constant.swift in Sources */,
