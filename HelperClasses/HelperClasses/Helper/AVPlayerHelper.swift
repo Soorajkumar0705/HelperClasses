@@ -1,5 +1,5 @@
 //
-//  AVPlayerHelperView.swift
+//  AVPlayerHelper.swift
 //  FeverApp
 //
 //  Created by Admin on 27/11/23.
@@ -8,7 +8,7 @@
 import AVKit
 import AVFoundation
 
-class AVPlayerHelperView: UIView {
+class AVPlayerHelper: UIView {
 
 	private	var player: AVPlayer!
 	private var playerLayer: AVPlayerLayer!
@@ -24,7 +24,7 @@ class AVPlayerHelperView: UIView {
 	}
 
 	deinit{
-		NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: nil)
+        NotificationCenter.default.removeObserver(self)
 	}
 
 	private func setupPlayer() {

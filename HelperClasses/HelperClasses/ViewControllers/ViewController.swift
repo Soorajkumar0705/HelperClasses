@@ -9,13 +9,70 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    static func root(){
-        AppDelegate.getAppDelegate()?.rootViewController(viewController: Self())
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        updateUI()
+        captureUIBindingClosures()
+        captureAPIIBindingClosures()
+        print("Succesfully Loaded VC.")
+    }
+
+    private func updateUI(){
+        
+        view.addTapGesture(configGesture: { [weak self] gesture in
+            guard let _ = self else { return }
+            
+        }, action: { [weak self] gesture in
+            guard let _ = self else { return }
+            
+        })
+        
+        view.addSwipeGesture(direction : .right, configGesture: { [weak self] gesture in
+            guard let _ = self else { return }
+            
+        }, action: { [weak self] gesture in
+            guard let _ = self else { return }
+            
+        })
+        
+        view.addLongTapGesture(configGesture: { [weak self] gesture in
+            guard let _ = self else { return }
+            
+        }, action: { [weak self] gesture in
+            guard let _ = self else { return }
+            
+            switch gesture.state{
+                
+            case .began:
+                print("Began")
+                
+            case .changed:
+                print("Changed")
+                
+            case .ended:
+                print("Ended")
+                
+            case .cancelled:
+                print("Canclled")
+                
+            case .possible:
+                print("Possible")
+                
+            case .failed:
+                print("Failed")
+                
+            @unknown default:
+                fatalError()
+            }
+        })
+    }
+    
+    private func captureUIBindingClosures(){
+        
+    }
+    
+    private func captureAPIIBindingClosures(){
+        
     }
 
 

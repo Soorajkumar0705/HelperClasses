@@ -8,6 +8,18 @@
 import UIKit
 import AudioToolbox
 
+
+//BLOCKED THE PRINT STATEMENTS FROM ALL OVER THE PROJECT
+
+func print(_ items: Any..., separator: String = " ", terminator: String = "\n") {
+    // IF PRINT ALLOWED THEN ONLY WILL THE PRINT STATEMENET WORK ELSE NOT PRINT ANYTHING
+    if isPrintAllowed{
+        items.forEach {
+            Swift.print($0, separator: separator, terminator: terminator)
+        }
+    }
+}
+
 class ComonFunctions : NSObject{
     static func getAttributedText(text: String = "", attributedString : NSMutableAttributedString? = nil, range: NSRange? = nil, textColor: UIColor? = nil, textColorOpacity: CGFloat = 1, backgroundColor: UIColor? = nil, font: UIFont? = nil, underLineStyle: NSUnderlineStyle? = nil, underLineColor: UIColor? = nil, underLineColorOpacity: CGFloat = 1, shadow: NSShadow? = nil) -> NSMutableAttributedString {
 
@@ -52,6 +64,10 @@ class ComonFunctions : NSObject{
 
     static func vibrate(){
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+    }
+    
+    static func playSystemSound(soundId: Int){  // 1006
+        AudioServicesPlaySystemSound(SystemSoundID(soundId))
     }
 
     static func isNetworkAvailable() -> Bool{

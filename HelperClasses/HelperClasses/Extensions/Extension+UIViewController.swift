@@ -10,8 +10,8 @@ import UIKit
 
 extension UIViewController{
     
-    static func rootVC(storyboard : UIStoryboard , passData: ( (UIViewController) -> Void )? = nil) {
-        if let vc = storyboard.instantiateViewController(withIdentifier: Self.className) as? Self{
+    static func rootVC<viewController : UIViewController>(storyboard : UIStoryboard, viewController : viewController.Type = UIViewController.self, passData: ( (viewController) -> Void )? = nil) {
+        if let vc = storyboard.instantiateViewController(withIdentifier: Self.className) as? viewController{
             passData?(vc)
             AppDelegate.getAppDelegate()?.rootViewController(viewController: vc)
         }else{

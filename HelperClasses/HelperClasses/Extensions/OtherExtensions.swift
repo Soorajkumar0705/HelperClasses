@@ -5,8 +5,19 @@
 //  Created by Apple on 10/02/24.
 //
 
-import Foundation
+import UIKit
 
+extension UIApplication {
+    static var release: String {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String? ?? "x.x"
+    }
+    static var build: String {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String? ?? "x"
+    }
+    static var version: String {
+        return "\(release).\(build)"
+    }
+}
 
 extension Bool{
     
@@ -30,6 +41,39 @@ extension Int32 {
         return Int(self)
     }
 
+}
+
+extension Double{
+    
+    func toInt() -> Int{
+        return Int(self)
+    }
+}
+
+extension String{
+    
+    func toUInt8() -> UInt8?{
+        UInt8(self)
+    }
+    
+    func toInt() -> Int?{
+        return Int(self)
+    }
+    
+    func toDouble() -> Double?{
+        return Double(self)
+    }
+    
+}
+
+extension Notification.Name {
+    
+    struct PopUpClickNotifications{
+    }
+    
+    struct Locations{
+        static let didUpdatedPlaceMark = Notification.Name("Locations+didUpdatedPlaceMark")
+    }
 }
 
 extension Data{
@@ -82,6 +126,14 @@ extension Date {
     
     static func getDiffrecefromDateToDate(from date1 : Date = getCurrentDate() ?? Date(), to date2 : Date) -> TimeInterval{
         return date2.timeIntervalSince(date1)
+    }
+    
+    func diffrenceFromCurrentDate() -> DateComponents{
+        Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self, to: Date())
+    }
+    
+    static func diffrenceOfDates(from startDate: Date, to endDate: Date) -> DateComponents{
+        Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: endDate, to: startDate)
     }
     
 }

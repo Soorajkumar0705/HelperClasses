@@ -48,6 +48,10 @@ extension UIView{
             self.layoutSubviews()
         })
     }
+    
+    func setRandomUniqueAccessibilityIdentifier() {
+        self.accessibilityIdentifier = UUID().uuidString
+    }
 }
 
 extension UIView {
@@ -64,7 +68,7 @@ extension UIView {
 
 extension UIView{
     
-    func applyConerRadius(cornerRadius: CGFloat, corners: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]){
+    func applyCornerRadius(cornerRadius: CGFloat, corners: CACornerMask = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]){
         self.clipsToBounds = true
         self.layer.masksToBounds = true
         self.layer.cornerRadius = cornerRadius
@@ -122,6 +126,31 @@ extension UIView{
         static var singleTapAction = "singleTapAction"
     }
 
+}
+
+// Long Tap Gesture
+extension UIView {
+    
+    func addLongTapGesture(configGesture: (UILongPressGestureRecognizer) -> Void = { _ in }, action: @escaping (UILongPressGestureRecognizer) -> Void = { _ in }) {
+        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTapGesture(_:)))
+        configGesture(longTapGesture)
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(longTapGesture)
+        
+        // Store the action closure as an associated object
+        objc_setAssociatedObject(self, &AssociatedLongTapGestureActionKeys.longTapAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+    
+    @objc private func handleLongTapGesture(_ gesture: UILongPressGestureRecognizer) {
+        if let action = objc_getAssociatedObject(self, &AssociatedLongTapGestureActionKeys.longTapAction) as? (UILongPressGestureRecognizer) -> Void {
+            action(gesture)
+        }
+        print("Long Tap")
+    }
+    
+    private struct AssociatedLongTapGestureActionKeys {
+        static var longTapAction = "longTapAction"
+    }
 }
 
 // Swipe Gesture
