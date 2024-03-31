@@ -104,9 +104,9 @@ extension UIView{
 // Tap Gesture
 extension UIView{
 
-    func addTapGesture(configGesture: (UITapGestureRecognizer) -> Void = { _ in }, action: @escaping (UITapGestureRecognizer) -> Void = { _ in }){
+    func addTapGesture(configGesture: ((UITapGestureRecognizer) -> Void)? = nil, action: @escaping ((UITapGestureRecognizer) -> Void)? = nil){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_ : )))
-        configGesture(tapGesture)
+        configGesture?(tapGesture)
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(tapGesture)
 
