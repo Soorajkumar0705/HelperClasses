@@ -110,20 +110,25 @@ extension UIView{
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(tapGesture)
 
-        // Store the action closure as an associated object
-        objc_setAssociatedObject(self, &AssociatedTapGestureActionKeys.singleTapAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        guard let key = AssociatedTapGestureActionKeys.singleTapAction else {
+            fatalError("AssociatedTapGestureActionKeys.singleTapAction is nil.")
+        }
+        objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
 
     }
 
     @objc private func handleTapGesture(_ gesture: UITapGestureRecognizer){
-        if let action = objc_getAssociatedObject(self, &AssociatedTapGestureActionKeys.singleTapAction) as? (UITapGestureRecognizer) -> Void {
+        guard let key = AssociatedTapGestureActionKeys.singleTapAction else {
+            fatalError("AssociatedTapGestureActionKeys.singleTapAction is nil.")
+        }
+        if let action = objc_getAssociatedObject(self, key) as? (UITapGestureRecognizer) -> Void {
             action(gesture)
         }
         print("Tap")
     }
 
     private struct AssociatedTapGestureActionKeys{
-        static var singleTapAction = "singleTapAction"
+        static let singleTapAction = UnsafeRawPointer(bitPattern: "singleTapAction".hashValue)
     }
 
 }
@@ -131,36 +136,43 @@ extension UIView{
 // Long Tap Gesture
 extension UIView {
     
-    func addLongTapGesture(configGesture: (UILongPressGestureRecognizer) -> Void = { _ in }, action: @escaping (UILongPressGestureRecognizer) -> Void = { _ in }) {
+    func addLongTapGesture(configGesture: ((UILongPressGestureRecognizer) -> Void)? = nil, action: ((UILongPressGestureRecognizer) -> Void)? = nil ) {
+        
         let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTapGesture(_:)))
-        configGesture(longTapGesture)
+        configGesture?(longTapGesture)
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(longTapGesture)
         
         // Store the action closure as an associated object
-        objc_setAssociatedObject(self, &AssociatedLongTapGestureActionKeys.longTapAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        guard let key = AssociatedLongTapGestureActionKeys.longTapAction else {
+            fatalError("AssociatedLongTapGestureActionKeys.longTapAction is nil.")
+        }
+        objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
     }
     
     @objc private func handleLongTapGesture(_ gesture: UILongPressGestureRecognizer) {
-        if let action = objc_getAssociatedObject(self, &AssociatedLongTapGestureActionKeys.longTapAction) as? (UILongPressGestureRecognizer) -> Void {
+        guard let key = AssociatedLongTapGestureActionKeys.longTapAction else {
+            fatalError("AssociatedLongTapGestureActionKeys.longTapAction is nil.")
+        }
+        if let action = objc_getAssociatedObject(self, key) as? (UILongPressGestureRecognizer) -> Void {
             action(gesture)
         }
         print("Long Tap")
     }
     
     private struct AssociatedLongTapGestureActionKeys {
-        static var longTapAction = "longTapAction"
+        static let longTapAction = UnsafeRawPointer(bitPattern: "longTapAction".hashValue)
     }
 }
 
 // Swipe Gesture
 extension UIView {
 
-    func addSwipeGesture(direction: UISwipeGestureRecognizer.Direction, configGesture: (UISwipeGestureRecognizer) -> Void = { _ in }, action: @escaping (UISwipeGestureRecognizer) -> Void = { _ in }) {
+    func addSwipeGesture(direction: UISwipeGestureRecognizer.Direction, configGesture: ((UISwipeGestureRecognizer) -> Void)? = nil, action: ((UISwipeGestureRecognizer) -> Void)? = nil) {
 
         let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
         swipeGesture.direction = direction
-        configGesture(swipeGesture)
+        configGesture?(swipeGesture)
         self.isUserInteractionEnabled = true
         self.addGestureRecognizer(swipeGesture)
 
@@ -168,72 +180,135 @@ extension UIView {
         switch direction{
 
         case .up:
-            objc_setAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeUpAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            guard let key = AssociatedSwipeGestureActionKeys.swipeUpAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeUpAction is nil.")
+            }
+            objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             print("up")
 
         case .down:
-            objc_setAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeDownAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            guard let key = AssociatedSwipeGestureActionKeys.swipeDownAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeDownAction is nil.")
+            }
+            objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             print("down")
 
         case.left:
-            objc_setAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeLeftAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            guard let key = AssociatedSwipeGestureActionKeys.swipeLeftAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeLeftAction is nil.")
+            }
+            objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             print("left")
 
         case .right:
-            objc_setAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeRightAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            guard let key = AssociatedSwipeGestureActionKeys.swipeRightAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeRightAction is nil.")
+            }
+            objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             print("Right")
 
         default:
-            objc_setAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeUnknownAction, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            guard let key = AssociatedSwipeGestureActionKeys.swipeUnknownAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeUnknownAction is nil.")
+            }
+            objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            
             print("unknown direction")
         }
     }
 
     @objc private func handleSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
-
+        var mainKey : UnsafeRawPointer!
+        
         switch gesture.direction{
 
         case .up:
-            if let action = objc_getAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeUpAction) as? (UISwipeGestureRecognizer) -> Void {
-                action(gesture)
+            guard let key = AssociatedSwipeGestureActionKeys.swipeUpAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeUpAction is nil.")
             }
+            mainKey = key
             print("up")
 
         case .down:
-            if let action = objc_getAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeDownAction) as? (UISwipeGestureRecognizer) -> Void {
-                action(gesture)
+            
+            guard let key = AssociatedSwipeGestureActionKeys.swipeDownAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeDownAction is nil.")
             }
+            mainKey = key
             print("down")
 
         case.left:
-            if let action = objc_getAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeLeftAction) as? (UISwipeGestureRecognizer) -> Void {
-                action(gesture)
+            
+            guard let key = AssociatedSwipeGestureActionKeys.swipeLeftAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeLeftAction is nil.")
             }
+            mainKey = key
             print("left")
 
         case .right:
-            if let action = objc_getAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeRightAction) as? (UISwipeGestureRecognizer) -> Void {
-                action(gesture)
+            guard let key = AssociatedSwipeGestureActionKeys.swipeRightAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeRightAction is nil.")
             }
+            mainKey = key
             print("Right")
 
         default:
-            if let action = objc_getAssociatedObject(self, &AssociatedSwipeGestureActionKeys.swipeUnknownAction) as? (UISwipeGestureRecognizer) -> Void {
-                action(gesture)
+            
+            guard let key = AssociatedSwipeGestureActionKeys.swipeUnknownAction else {
+                fatalError("AssociatedSwipeGestureActionKeys.swipeUnknownAction is nil.")
             }
+            mainKey = key
             print("unknown direction")
         }
+        
+        
+        if let action = objc_getAssociatedObject(self, mainKey) as? (UISwipeGestureRecognizer) -> Void {
+            action(gesture)
+        }
+        
     }
-
+    
     private struct AssociatedSwipeGestureActionKeys {
-        static var swipeUpAction = "swipeUpAction"
-        static var swipeDownAction = "swipeDownAction"
-        static var swipeRightAction = "swipeRightAction"
-        static var swipeLeftAction = "swipeLeftAction"
-        static var swipeUnknownAction = "swipeUnknownAction"
+        static let swipeUpAction = UnsafeRawPointer(bitPattern: "swipeUpAction".hashValue)
+        static let swipeDownAction = UnsafeRawPointer(bitPattern: "swipeDownAction".hashValue)
+        static let swipeRightAction = UnsafeRawPointer(bitPattern: "swipeRightAction".hashValue)
+        static let swipeLeftAction = UnsafeRawPointer(bitPattern: "swipeLeftAction".hashValue)
+        static let swipeUnknownAction = UnsafeRawPointer(bitPattern: "swipeUnknownAction".hashValue)
     }
+    
 }
 
+extension UIScrollView {
+    
+    func addPullToRefresh(configControll: ((UIRefreshControl) -> Void)? = nil, action: ((UIRefreshControl) -> Void)? = nil){
+        
+        let refreshControll = UIRefreshControl()
+        refreshControll.addTarget(self, action: #selector(handlePullToRefresh(_:)), for: .valueChanged)
+        configControll?(refreshControll)
+        self.refreshControl = refreshControll
+        
+        guard let key = AssociatedPullToRefreshActionKeys.pullAction else {
+            fatalError("AssociatedPullToRefreshActionKeys.pullAction is nil.")
+        }
+        objc_setAssociatedObject(self, key, action, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+    
+    @objc private func handlePullToRefresh(_ refreshControll: UIRefreshControl){
+        guard let key = AssociatedPullToRefreshActionKeys.pullAction else {
+            fatalError("AssociatedPullToRefreshActionKeys.pullAction is nil.")
+        }
+        guard let action = objc_getAssociatedObject(self, key) as? (UIRefreshControl) -> Void else {
+            fatalError("AssociatedPullToRefreshActionKeys.pullAction is nil.")
+        }
+        action(refreshControll)
+        print("Pull To Refresh")
+    }
+    
+    private struct AssociatedPullToRefreshActionKeys {
+        static let pullAction = UnsafeRawPointer(bitPattern: "pullAction".hashValue)
+    }
+    
+}
 
 // BELOW FUNCTION HELPS TO CONVERT THE UICOLOR TO CGCOLOR IF THE BORDERCOLOR IS ADDED FROM THE RUNTIME ATTRIBUTE IN STORYBOARD
 extension CALayer {
