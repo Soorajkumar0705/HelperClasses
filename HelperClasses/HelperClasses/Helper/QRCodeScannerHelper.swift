@@ -51,8 +51,8 @@ class QRCodeScannerHelper : NSObject {
         }
     }
 
-    func isScanning() -> Bool{
-        return self.captureSession.isRunning
+    func isScanning() -> Bool?{
+        return self.captureSession?.isRunning
     }
 
     func setPreviewLayerIn(_ view : UIView){

@@ -66,6 +66,11 @@ class ComonFunctions : NSObject{
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
+    static func generateHapticFeedback(value : UINotificationFeedbackGenerator.FeedbackType = .success){
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+    }
+    
     static func playSystemSound(soundId: Int){  // 1006
         AudioServicesPlaySystemSound(SystemSoundID(soundId))
     }
@@ -99,7 +104,81 @@ class ComonFunctions : NSObject{
         }
         return nil
     }
- 
+    
+    static func getImageDataFromURL(urlString : String, onSuccess: ((Data) -> Void)? = nil, onFailure : PassStringClosure? = nil){
+        guard let url = URL(string: urlString) else {
+            print("Not found a valid URL in",#function )
+            return
+        }
+        
+        DispatchQueue.global(qos: .background).async {
+            
+            do{
+                let data = try Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    onSuccess?(data)
+                }
+                
+            }catch let error{
+                print("Found error \(error) in URL Data in ",#function)
+                onFailure?("Some Error occurred.")
+            }
+        }
+    }   // getImageDataFromURL
+    
+    static func getImageDataFromURL(url : URL, onSuccess: ((Data) -> Void)? = nil, onFailure : PassStringClosure? = nil){
+        
+        DispatchQueue.global(qos: .background).async {
+            
+            do{
+                let data = try Data(contentsOf: url)
+                onSuccess?(data)
+                
+            }catch let error{
+                print("Found error \(error) in URL Data in ",#function)
+                onFailure?("Some Error occurred.")
+            }
+        }
+    }   // getImageDataFromURL
+    
+    static func getTimeFormat() -> TimeFormat{
+        let locale = NSLocale.current
+        let formatter : String = DateFormatter.dateFormat(fromTemplate: "j", options:0, locale:locale)!
+        if formatter.contains("a") {
+            return ._12hr
+        } else {
+            return ._24hr
+        }
+    }
+    
 }
 
+//MARK: - Unit Conversion
 
+struct UnitConversion {
+    
+    static func kmToMiles(km value: Double) -> Double{
+        return value*0.62137191
+    }
+    
+    static func metersToKilometers(meters: Int) -> Double {
+        return Double(meters) / 1000.0
+    }
+    
+    static func secondsToMinutes(sec seconds: Int) -> Double{
+        Double(seconds)/60
+    }
+    
+    static func minutesToHours(min minutes: Int) -> Double{
+        Double(minutes)/60
+    }
+    
+    static func secondsToHours(sec seconds : Int) -> Double{
+        Double(seconds)/3600
+    }
+    
+    static func secondsToHoursMinutesSeconds(_ seconds: Int) -> (Int, Int, Int) {
+        return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
+    }
+    
+}

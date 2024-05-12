@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         updateUI()
         captureUIBindingClosures()
-        captureAPIIBindingClosures()
+        captureAPIBindingClosures()
         print("Succesfully Loaded VC.")
     }
 
@@ -71,7 +71,7 @@ class ViewController: UIViewController {
         
     }
     
-    private func captureAPIIBindingClosures(){
+    private func captureAPIBindingClosures(){
         
     }
 

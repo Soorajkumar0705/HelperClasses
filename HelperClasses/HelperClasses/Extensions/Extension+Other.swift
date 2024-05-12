@@ -1,11 +1,21 @@
 //
-//  OtherExtensions.swift
+//  Extension+Other.swift
 //  HelperClasses
 //
 //  Created by Apple on 10/02/24.
 //
 
 import UIKit
+
+extension NSObject {
+    var className: String {
+        return String(describing: type(of: self))
+    }
+
+    class var className: String {
+        return String(describing: self)
+    }
+}
 
 extension UIApplication {
     static var release: String {
@@ -66,6 +76,56 @@ extension String{
     
 }
 
+extension String.SubSequence{
+    
+    func toString() -> String{
+       return String(self)
+    }
+    
+}
+
+// Below function provide the ornial of the number
+// EX :- "1" -> "1st", "2" -> "2nd", "3" -> "3rd", "4" -> "4th"
+
+extension String {
+    var ordinal: String {
+        switch self {
+        case "1", "21", "31": return "\(self)st"
+        case "2", "22": return "\(self)nd"
+        case "3", "23": return "\(self)rd"
+        default: return "\(self)th"
+        }
+    }
+}
+
+// Notification
+
+extension NSObject {
+    
+    func addNotification(name : Notification.Name, object : Any? = nil , getNotification : @escaping (Notification) -> Void ){
+        NotificationCenter.default.addObserver(forName: name, object: nil, queue: .main, using: { [weak self] notification in
+            guard let self else { return }
+            getNotification(notification)
+        })
+    }
+    
+    func addNotification(name : String, object : Any? = nil , getNotification : @escaping (Notification) -> Void ){
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue: name), object: nil, queue: .main, using: { [weak self] notification in
+            guard let self else { return }
+            getNotification(notification)
+        })
+    }
+    
+}
+
+func postNotification(name : Notification.Name, object : Any? = nil){
+    NotificationCenter.default.post(name: name, object: object)
+}
+
+func postNotification(name : String, object : Any? = nil){
+    NotificationCenter.default.post(name: Notification.Name(rawValue: name), object: object)
+}
+
 extension Notification.Name {
     
     struct PopUpClickNotifications{
@@ -78,9 +138,26 @@ extension Notification.Name {
 
 extension Data{
     
+    func toImage() -> UIImage?{
+        return UIImage(data: self)
+    }
+    
     func toString(encoding : String.Encoding = .utf8) -> String?{
         String(data: self, encoding: encoding)?.replacingOccurrences(of: "\0", with: "")
     }
+    
+    /*
+     Example -
+     let value: Data = Data()
+     
+     value.convertToValue(type : Int8.self)
+     value.convertToValue(type : Int16.self)
+     value.convertToValue(type : Int32.self)
+     value.convertToValue(type : Float.self)
+     value.convertToValue(type : Double.self)
+     value.convertToValue(type : String.self)
+     
+    */
     
     func convertToValue<T: LosslessStringConvertible>(type: T.Type = Int8.self) -> T? {
            if self.count == 0 && self.isEmpty {

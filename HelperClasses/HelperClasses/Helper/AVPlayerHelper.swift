@@ -13,74 +13,56 @@ class AVPlayerHelper: UIView {
 	private	var player: AVPlayer!
 	private var playerLayer: AVPlayerLayer!
 
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		setupPlayer()
-	}
-
-	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
-		setupPlayer()
-	}
-
 	deinit{
+        didStopVideoPlaying = nil
         NotificationCenter.default.removeObserver(self)
+        print("Removed \(className) automatically from memory.")
 	}
+    
+    var isEnableAutoPlay : Bool = false
+    var didStopVideoPlaying : VoidClosure? = nil
 
-	private func setupPlayer() {
-		self.player = AVPlayer()
-		self.playerLayer = AVPlayerLayer(player: self.player)
-	}
-
-	func startPlayWithURL(videoURL:String?){
-		guard let videoURLString = videoURL else { return }
-		guard let videoURL = URL(string: videoURLString) else { return }
-		playVideo(videoURL: videoURL)
-	}
-
-	func startPlay(fileName: String, ofType: String) {
-		guard let videoURL = Bundle.main.url(forResource: fileName, withExtension: ofType) else {
-			print("Error while fetching the video path")
-			return
-		}
-		playVideo(videoURL: videoURL)
-	}
-
-	private func playVideo(videoURL: URL){
-
-		player = AVPlayer(url: videoURL)
-		playerLayer = AVPlayerLayer(player: player)
-		playerLayer.repeatCount = .greatestFiniteMagnitude
-		playerLayer.repeatDuration = .greatestFiniteMagnitude
-		layer.addSublayer(playerLayer)
-
-		NotificationCenter.default.addObserver(self, selector: #selector(playerEndPlaying(_ :)), name: .AVPlayerItemDidPlayToEndTime, object: nil)
-
-		layoutSubviews()
-	}
-
-	func play(){
-		self.player?.play()
-	}
-
-	func pause(){
-		self.player.pause()
-	}
-	
-	func removePlayer(){
-		self.player = nil
-		self.playerLayer = nil
-		NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: nil)
-	}
-
-	@objc private func playerEndPlaying(_ : Notification){
-		player.seek(to: CMTime.zero)
-		player.play()
-		print(#function)
-	}
-
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		playerLayer.frame = bounds
-	}
+    func configurePlayer(videoName: String, withExtension: String = "mp4", gravity: AVLayerVideoGravity = .resize){
+        if let videoURL = Bundle.main.url(forResource: videoName, withExtension: withExtension) {
+            player = AVPlayer(url: videoURL)
+            playerLayer = AVPlayerLayer(player: player)
+            playerLayer?.frame = self.bounds
+            playerLayer?.videoGravity = .resize
+            
+            if let playerLayer = playerLayer {
+                self.layer.addSublayer(playerLayer)
+            }
+            
+            NotificationCenter.default.addObserver(forName: AVPlayerItem.didPlayToEndTimeNotification, object: player?.currentItem, queue: .main, using: { [weak self] _ in
+                guard let self else { return }
+                
+                if isEnableAutoPlay{
+                    player?.seek(to: CMTime.zero)
+                    player?.play()
+                }
+                
+                didStopVideoPlaying?()
+            })
+            
+        }
+    }
+    
+    func play(){
+        player?.play()
+    }
+    
+    func pause(){
+        player?.pause()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layoutSubviews()
+        layoutIfNeeded()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+    }
 }

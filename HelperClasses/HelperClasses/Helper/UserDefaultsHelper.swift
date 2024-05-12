@@ -22,9 +22,24 @@ class UserDefaultsHelper : NSObject {
         UserDefaults.standard.removeObject(forKey: "sessionToken")
     }
     
+    static func setImageURLDataInUD(for KeyURL: String, imageData: Data?){
+        UserDefaults.standard.setValue(imageData, forKey: KeyURL)
+    }
+    
+    static func getImageURLDataInUD(for KeyURL: String) -> Data?{
+        return UserDefaults.standard.value(forKey: KeyURL) as? Data
+    }
+    
     static func clearUserDefaultData() {
         for key in UserDataKeys.allCases{
             UserDefaults.standard.removeObject(forKey: key.rawValue)
+        }
+        
+        // REMOVE THE URLS
+        for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            if key.contains("http") {
+                print("Found URL for key = \(key)")
+            }
         }
     }
     

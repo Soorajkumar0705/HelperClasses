@@ -16,12 +16,14 @@
 		154BC5F02BB1C88000B9B011 /* Extension+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154BC5EF2BB1C88000B9B011 /* Extension+String.swift */; };
 		154BC5F32BB1CA6000B9B011 /* SignInWithSocialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154BC5F22BB1CA6000B9B011 /* SignInWithSocialViewModel.swift */; };
 		154BC5F52BB1CB3A00B9B011 /* ViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154BC5F42BB1CB3A00B9B011 /* ViewControllerViewModel.swift */; };
+		18275B552BF0B52B00C7C20F /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18275B542BF0B52B00C7C20F /* Enum.swift */; };
+		18275B572BF0B9E800C7C20F /* AudioManagerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18275B562BF0B9E800C7C20F /* AudioManagerVC.swift */; };
 		1869D9152B77EA9900DA2210 /* ComonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9122B77EA9700DA2210 /* ComonFunctions.swift */; };
 		1869D9162B77EA9900DA2210 /* BLEManagerPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9132B77EA9900DA2210 /* BLEManagerPeripheralDelegate.swift */; };
 		1869D9172B77EA9A00DA2210 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9142B77EA9900DA2210 /* BLEManager.swift */; };
 		1869D91A2B77EAF700DA2210 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9182B77EAF500DA2210 /* Reachability.swift */; };
 		1869D91B2B77EAF700DA2210 /* QRCodeScannerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9192B77EAF600DA2210 /* QRCodeScannerHelper.swift */; };
-		1869D91D2B77EB6000DA2210 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D91C2B77EB5F00DA2210 /* OtherExtensions.swift */; };
+		1869D91D2B77EB6000DA2210 /* Extension+Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D91C2B77EB5F00DA2210 /* Extension+Other.swift */; };
 		1869D91F2B77EEE600DA2210 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D91E2B77EEE600DA2210 /* APIService.swift */; };
 		1869D9212B77F11200DA2210 /* AVPlayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D9202B77F11200DA2210 /* AVPlayerHelper.swift */; };
 		188571862B2CA0020054CFD5 /* FontFamilly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188571852B2CA0020054CFD5 /* FontFamilly.swift */; };
@@ -47,12 +49,14 @@
 		154BC5EF2BB1C88000B9B011 /* Extension+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+String.swift"; sourceTree = "<group>"; };
 		154BC5F22BB1CA6000B9B011 /* SignInWithSocialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithSocialViewModel.swift; sourceTree = "<group>"; };
 		154BC5F42BB1CB3A00B9B011 /* ViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerViewModel.swift; sourceTree = "<group>"; };
+		18275B542BF0B52B00C7C20F /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		18275B562BF0B9E800C7C20F /* AudioManagerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManagerVC.swift; sourceTree = "<group>"; };
 		1869D9122B77EA9700DA2210 /* ComonFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComonFunctions.swift; sourceTree = "<group>"; };
 		1869D9132B77EA9900DA2210 /* BLEManagerPeripheralDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManagerPeripheralDelegate.swift; sourceTree = "<group>"; };
 		1869D9142B77EA9900DA2210 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		1869D9182B77EAF500DA2210 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		1869D9192B77EAF600DA2210 /* QRCodeScannerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerHelper.swift; sourceTree = "<group>"; };
-		1869D91C2B77EB5F00DA2210 /* OtherExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
+		1869D91C2B77EB5F00DA2210 /* Extension+Other.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+Other.swift"; sourceTree = "<group>"; };
 		1869D91E2B77EEE600DA2210 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1869D9202B77F11200DA2210 /* AVPlayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerHelper.swift; sourceTree = "<group>"; };
 		188571852B2CA0020054CFD5 /* FontFamilly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontFamilly.swift; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				154BC5E12BB1C12C00B9B011 /* AppDetails.swift */,
+				18275B542BF0B52B00C7C20F /* Enum.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				18F086EF2B2B7C2200CDFB27 /* ViewController.swift */,
+				18275B562BF0B9E800C7C20F /* AudioManagerVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -208,7 +214,7 @@
 				18FAA3DB2B663F7D00884F27 /* Extension+UIViewController.swift */,
 				18F087062B2B7F1F00CDFB27 /* Extension+UIView.swift */,
 				154BC5EF2BB1C88000B9B011 /* Extension+String.swift */,
-				1869D91C2B77EB5F00DA2210 /* OtherExtensions.swift */,
+				1869D91C2B77EB5F00DA2210 /* Extension+Other.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,7 +294,8 @@
 				1869D91A2B77EAF700DA2210 /* Reachability.swift in Sources */,
 				18F086F02B2B7C2200CDFB27 /* ViewController.swift in Sources */,
 				154BC5E22BB1C12C00B9B011 /* AppDetails.swift in Sources */,
-				1869D91D2B77EB6000DA2210 /* OtherExtensions.swift in Sources */,
+				18275B572BF0B9E800C7C20F /* AudioManagerVC.swift in Sources */,
+				1869D91D2B77EB6000DA2210 /* Extension+Other.swift in Sources */,
 				1869D91B2B77EAF700DA2210 /* QRCodeScannerHelper.swift in Sources */,
 				1869D9162B77EA9900DA2210 /* BLEManagerPeripheralDelegate.swift in Sources */,
 				154BC5EC2BB1C81A00B9B011 /* CustomTestView.swift in Sources */,
@@ -303,6 +310,7 @@
 				1869D9172B77EA9A00DA2210 /* BLEManager.swift in Sources */,
 				1869D9152B77EA9900DA2210 /* ComonFunctions.swift in Sources */,
 				18F087072B2B7F1F00CDFB27 /* Extension+UIView.swift in Sources */,
+				18275B552BF0B52B00C7C20F /* Enum.swift in Sources */,
 				18FAA3DE2B66409E00884F27 /* Extension+UIStoryboard.swift in Sources */,
 				154BC5F52BB1CB3A00B9B011 /* ViewControllerViewModel.swift in Sources */,
 				154BC5F02BB1C88000B9B011 /* Extension+String.swift in Sources */,

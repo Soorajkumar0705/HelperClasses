@@ -5,7 +5,7 @@
 //  Created by Meet Appmatictech on 25/03/24.
 //
 
-import Foundation
+import UIKit
 
 extension String{
 
@@ -54,5 +54,9 @@ extension String{
         }
         return returnableText
     }   // charSeperatedAfterSomenuberOfChar
+    
+    func getImageFromUD() -> UIImage?{
+        return UserDefaultsHelper.getImageURLDataInUD(for: self)?.toImage()
+    }
     
 }

@@ -67,6 +67,10 @@ class LocationManagerHelper : NSObject{
         locationManager.delegate = self
     }
     
+    func isLocationAvailable() -> Bool{
+        return (locationManager?.authorizationStatus == .authorizedWhenInUse) || (locationManager?.authorizationStatus == .authorizedAlways)
+    }
+    
     func fetchLastLoationPlacemarkDetails(completion : ((PlaceMark) -> Void)? = nil ){
         guard let lastLocation else {
             configureLocationManager()
